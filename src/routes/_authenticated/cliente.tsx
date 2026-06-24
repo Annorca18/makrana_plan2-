@@ -9,7 +9,7 @@ export const Route = createFileRoute("/_authenticated/cliente")({
 });
 
 const items = [
-  { to: "/cliente", label: "Mi dashboard", icon: LayoutDashboard, exact: true },
+  { to: "/cliente", label: "Mi dashboard", icon: LayoutDashboard, exact: true as boolean | undefined },
   { to: "/cliente/perfil", label: "Mi perfil", icon: User },
   { to: "/cliente/pedidos", label: "Mis pedidos", icon: ShoppingBag },
   { to: "/cliente/comprobantes", label: "Comprobantes", icon: FileText },

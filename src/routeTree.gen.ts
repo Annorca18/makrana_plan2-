@@ -9,19 +9,39 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as PublicRouteImport } from './routes/_public'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as PublicIndexRouteImport } from './routes/_public.index'
 import { Route as PublicTalleresRouteImport } from './routes/_public.talleres'
 import { Route as PublicSobreMakranaRouteImport } from './routes/_public.sobre-makrana'
 import { Route as PublicRegistroRouteImport } from './routes/_public.registro'
 import { Route as PublicContactoRouteImport } from './routes/_public.contacto'
+import { Route as AuthenticatedClienteRouteImport } from './routes/_authenticated/cliente'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as PublicNovedadesIndexRouteImport } from './routes/_public.novedades.index'
 import { Route as PublicCatalogoIndexRouteImport } from './routes/_public.catalogo.index'
+import { Route as AuthenticatedClienteIndexRouteImport } from './routes/_authenticated/cliente.index'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as PublicNovedadesSlugRouteImport } from './routes/_public.novedades.$slug'
 import { Route as PublicCatalogoSlugRouteImport } from './routes/_public.catalogo.$slug'
+import { Route as AuthenticatedClienteTalleresRouteImport } from './routes/_authenticated/cliente.talleres'
+import { Route as AuthenticatedClientePerfilRouteImport } from './routes/_authenticated/cliente.perfil'
+import { Route as AuthenticatedClientePedidosRouteImport } from './routes/_authenticated/cliente.pedidos'
+import { Route as AuthenticatedClienteCursosRouteImport } from './routes/_authenticated/cliente.cursos'
+import { Route as AuthenticatedClienteComprobantesRouteImport } from './routes/_authenticated/cliente.comprobantes'
 
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PublicRoute = PublicRouteImport.update({
   id: '/_public',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PublicIndexRoute = PublicIndexRouteImport.update({
@@ -49,6 +69,16 @@ const PublicContactoRoute = PublicContactoRouteImport.update({
   path: '/contacto',
   getParentRoute: () => PublicRoute,
 } as any)
+const AuthenticatedClienteRoute = AuthenticatedClienteRouteImport.update({
+  id: '/cliente',
+  path: '/cliente',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const PublicNovedadesIndexRoute = PublicNovedadesIndexRouteImport.update({
   id: '/novedades/',
   path: '/novedades/',
@@ -58,6 +88,17 @@ const PublicCatalogoIndexRoute = PublicCatalogoIndexRouteImport.update({
   id: '/catalogo/',
   path: '/catalogo/',
   getParentRoute: () => PublicRoute,
+} as any)
+const AuthenticatedClienteIndexRoute =
+  AuthenticatedClienteIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedClienteRoute,
+  } as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
 const PublicNovedadesSlugRoute = PublicNovedadesSlugRouteImport.update({
   id: '/novedades/$slug',
@@ -69,39 +110,98 @@ const PublicCatalogoSlugRoute = PublicCatalogoSlugRouteImport.update({
   path: '/catalogo/$slug',
   getParentRoute: () => PublicRoute,
 } as any)
+const AuthenticatedClienteTalleresRoute =
+  AuthenticatedClienteTalleresRouteImport.update({
+    id: '/talleres',
+    path: '/talleres',
+    getParentRoute: () => AuthenticatedClienteRoute,
+  } as any)
+const AuthenticatedClientePerfilRoute =
+  AuthenticatedClientePerfilRouteImport.update({
+    id: '/perfil',
+    path: '/perfil',
+    getParentRoute: () => AuthenticatedClienteRoute,
+  } as any)
+const AuthenticatedClientePedidosRoute =
+  AuthenticatedClientePedidosRouteImport.update({
+    id: '/pedidos',
+    path: '/pedidos',
+    getParentRoute: () => AuthenticatedClienteRoute,
+  } as any)
+const AuthenticatedClienteCursosRoute =
+  AuthenticatedClienteCursosRouteImport.update({
+    id: '/cursos',
+    path: '/cursos',
+    getParentRoute: () => AuthenticatedClienteRoute,
+  } as any)
+const AuthenticatedClienteComprobantesRoute =
+  AuthenticatedClienteComprobantesRouteImport.update({
+    id: '/comprobantes',
+    path: '/comprobantes',
+    getParentRoute: () => AuthenticatedClienteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof PublicIndexRoute
+  '/auth': typeof AuthRoute
+  '/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/cliente': typeof AuthenticatedClienteRouteWithChildren
   '/contacto': typeof PublicContactoRoute
   '/registro': typeof PublicRegistroRoute
   '/sobre-makrana': typeof PublicSobreMakranaRoute
   '/talleres': typeof PublicTalleresRoute
+  '/cliente/comprobantes': typeof AuthenticatedClienteComprobantesRoute
+  '/cliente/cursos': typeof AuthenticatedClienteCursosRoute
+  '/cliente/pedidos': typeof AuthenticatedClientePedidosRoute
+  '/cliente/perfil': typeof AuthenticatedClientePerfilRoute
+  '/cliente/talleres': typeof AuthenticatedClienteTalleresRoute
   '/catalogo/$slug': typeof PublicCatalogoSlugRoute
   '/novedades/$slug': typeof PublicNovedadesSlugRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
+  '/cliente/': typeof AuthenticatedClienteIndexRoute
   '/catalogo/': typeof PublicCatalogoIndexRoute
   '/novedades/': typeof PublicNovedadesIndexRoute
 }
 export interface FileRoutesByTo {
+  '/': typeof PublicIndexRoute
+  '/auth': typeof AuthRoute
   '/contacto': typeof PublicContactoRoute
   '/registro': typeof PublicRegistroRoute
   '/sobre-makrana': typeof PublicSobreMakranaRoute
   '/talleres': typeof PublicTalleresRoute
-  '/': typeof PublicIndexRoute
+  '/cliente/comprobantes': typeof AuthenticatedClienteComprobantesRoute
+  '/cliente/cursos': typeof AuthenticatedClienteCursosRoute
+  '/cliente/pedidos': typeof AuthenticatedClientePedidosRoute
+  '/cliente/perfil': typeof AuthenticatedClientePerfilRoute
+  '/cliente/talleres': typeof AuthenticatedClienteTalleresRoute
   '/catalogo/$slug': typeof PublicCatalogoSlugRoute
   '/novedades/$slug': typeof PublicNovedadesSlugRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
+  '/cliente': typeof AuthenticatedClienteIndexRoute
   '/catalogo': typeof PublicCatalogoIndexRoute
   '/novedades': typeof PublicNovedadesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/_public': typeof PublicRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/_authenticated/cliente': typeof AuthenticatedClienteRouteWithChildren
   '/_public/contacto': typeof PublicContactoRoute
   '/_public/registro': typeof PublicRegistroRoute
   '/_public/sobre-makrana': typeof PublicSobreMakranaRoute
   '/_public/talleres': typeof PublicTalleresRoute
   '/_public/': typeof PublicIndexRoute
+  '/_authenticated/cliente/comprobantes': typeof AuthenticatedClienteComprobantesRoute
+  '/_authenticated/cliente/cursos': typeof AuthenticatedClienteCursosRoute
+  '/_authenticated/cliente/pedidos': typeof AuthenticatedClientePedidosRoute
+  '/_authenticated/cliente/perfil': typeof AuthenticatedClientePerfilRoute
+  '/_authenticated/cliente/talleres': typeof AuthenticatedClienteTalleresRoute
   '/_public/catalogo/$slug': typeof PublicCatalogoSlugRoute
   '/_public/novedades/$slug': typeof PublicNovedadesSlugRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
+  '/_authenticated/cliente/': typeof AuthenticatedClienteIndexRoute
   '/_public/catalogo/': typeof PublicCatalogoIndexRoute
   '/_public/novedades/': typeof PublicNovedadesIndexRoute
 }
@@ -109,50 +209,95 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/auth'
+    | '/admin'
+    | '/cliente'
     | '/contacto'
     | '/registro'
     | '/sobre-makrana'
     | '/talleres'
+    | '/cliente/comprobantes'
+    | '/cliente/cursos'
+    | '/cliente/pedidos'
+    | '/cliente/perfil'
+    | '/cliente/talleres'
     | '/catalogo/$slug'
     | '/novedades/$slug'
+    | '/admin/'
+    | '/cliente/'
     | '/catalogo/'
     | '/novedades/'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/'
+    | '/auth'
     | '/contacto'
     | '/registro'
     | '/sobre-makrana'
     | '/talleres'
-    | '/'
+    | '/cliente/comprobantes'
+    | '/cliente/cursos'
+    | '/cliente/pedidos'
+    | '/cliente/perfil'
+    | '/cliente/talleres'
     | '/catalogo/$slug'
     | '/novedades/$slug'
+    | '/admin'
+    | '/cliente'
     | '/catalogo'
     | '/novedades'
   id:
     | '__root__'
+    | '/_authenticated'
     | '/_public'
+    | '/auth'
+    | '/_authenticated/admin'
+    | '/_authenticated/cliente'
     | '/_public/contacto'
     | '/_public/registro'
     | '/_public/sobre-makrana'
     | '/_public/talleres'
     | '/_public/'
+    | '/_authenticated/cliente/comprobantes'
+    | '/_authenticated/cliente/cursos'
+    | '/_authenticated/cliente/pedidos'
+    | '/_authenticated/cliente/perfil'
+    | '/_authenticated/cliente/talleres'
     | '/_public/catalogo/$slug'
     | '/_public/novedades/$slug'
+    | '/_authenticated/admin/'
+    | '/_authenticated/cliente/'
     | '/_public/catalogo/'
     | '/_public/novedades/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   PublicRoute: typeof PublicRouteWithChildren
+  AuthRoute: typeof AuthRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_public': {
       id: '/_public'
       path: ''
       fullPath: '/'
       preLoaderRoute: typeof PublicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_public/': {
@@ -190,6 +335,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicContactoRouteImport
       parentRoute: typeof PublicRoute
     }
+    '/_authenticated/cliente': {
+      id: '/_authenticated/cliente'
+      path: '/cliente'
+      fullPath: '/cliente'
+      preLoaderRoute: typeof AuthenticatedClienteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_public/novedades/': {
       id: '/_public/novedades/'
       path: '/novedades'
@@ -203,6 +362,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/catalogo/'
       preLoaderRoute: typeof PublicCatalogoIndexRouteImport
       parentRoute: typeof PublicRoute
+    }
+    '/_authenticated/cliente/': {
+      id: '/_authenticated/cliente/'
+      path: '/'
+      fullPath: '/cliente/'
+      preLoaderRoute: typeof AuthenticatedClienteIndexRouteImport
+      parentRoute: typeof AuthenticatedClienteRoute
+    }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
     }
     '/_public/novedades/$slug': {
       id: '/_public/novedades/$slug'
@@ -218,8 +391,88 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicCatalogoSlugRouteImport
       parentRoute: typeof PublicRoute
     }
+    '/_authenticated/cliente/talleres': {
+      id: '/_authenticated/cliente/talleres'
+      path: '/talleres'
+      fullPath: '/cliente/talleres'
+      preLoaderRoute: typeof AuthenticatedClienteTalleresRouteImport
+      parentRoute: typeof AuthenticatedClienteRoute
+    }
+    '/_authenticated/cliente/perfil': {
+      id: '/_authenticated/cliente/perfil'
+      path: '/perfil'
+      fullPath: '/cliente/perfil'
+      preLoaderRoute: typeof AuthenticatedClientePerfilRouteImport
+      parentRoute: typeof AuthenticatedClienteRoute
+    }
+    '/_authenticated/cliente/pedidos': {
+      id: '/_authenticated/cliente/pedidos'
+      path: '/pedidos'
+      fullPath: '/cliente/pedidos'
+      preLoaderRoute: typeof AuthenticatedClientePedidosRouteImport
+      parentRoute: typeof AuthenticatedClienteRoute
+    }
+    '/_authenticated/cliente/cursos': {
+      id: '/_authenticated/cliente/cursos'
+      path: '/cursos'
+      fullPath: '/cliente/cursos'
+      preLoaderRoute: typeof AuthenticatedClienteCursosRouteImport
+      parentRoute: typeof AuthenticatedClienteRoute
+    }
+    '/_authenticated/cliente/comprobantes': {
+      id: '/_authenticated/cliente/comprobantes'
+      path: '/comprobantes'
+      fullPath: '/cliente/comprobantes'
+      preLoaderRoute: typeof AuthenticatedClienteComprobantesRouteImport
+      parentRoute: typeof AuthenticatedClienteRoute
+    }
   }
 }
+
+interface AuthenticatedAdminRouteChildren {
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+}
+
+const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
+  AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+}
+
+const AuthenticatedAdminRouteWithChildren =
+  AuthenticatedAdminRoute._addFileChildren(AuthenticatedAdminRouteChildren)
+
+interface AuthenticatedClienteRouteChildren {
+  AuthenticatedClienteComprobantesRoute: typeof AuthenticatedClienteComprobantesRoute
+  AuthenticatedClienteCursosRoute: typeof AuthenticatedClienteCursosRoute
+  AuthenticatedClientePedidosRoute: typeof AuthenticatedClientePedidosRoute
+  AuthenticatedClientePerfilRoute: typeof AuthenticatedClientePerfilRoute
+  AuthenticatedClienteTalleresRoute: typeof AuthenticatedClienteTalleresRoute
+  AuthenticatedClienteIndexRoute: typeof AuthenticatedClienteIndexRoute
+}
+
+const AuthenticatedClienteRouteChildren: AuthenticatedClienteRouteChildren = {
+  AuthenticatedClienteComprobantesRoute: AuthenticatedClienteComprobantesRoute,
+  AuthenticatedClienteCursosRoute: AuthenticatedClienteCursosRoute,
+  AuthenticatedClientePedidosRoute: AuthenticatedClientePedidosRoute,
+  AuthenticatedClientePerfilRoute: AuthenticatedClientePerfilRoute,
+  AuthenticatedClienteTalleresRoute: AuthenticatedClienteTalleresRoute,
+  AuthenticatedClienteIndexRoute: AuthenticatedClienteIndexRoute,
+}
+
+const AuthenticatedClienteRouteWithChildren =
+  AuthenticatedClienteRoute._addFileChildren(AuthenticatedClienteRouteChildren)
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRouteWithChildren
+  AuthenticatedClienteRoute: typeof AuthenticatedClienteRouteWithChildren
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRouteWithChildren,
+  AuthenticatedClienteRoute: AuthenticatedClienteRouteWithChildren,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
 interface PublicRouteChildren {
   PublicContactoRoute: typeof PublicContactoRoute
@@ -249,7 +502,9 @@ const PublicRouteWithChildren =
   PublicRoute._addFileChildren(PublicRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   PublicRoute: PublicRouteWithChildren,
+  AuthRoute: AuthRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
