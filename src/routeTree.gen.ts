@@ -9,61 +9,788 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as PublicRouteImport } from './routes/_public'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as PublicIndexRouteImport } from './routes/_public.index'
+import { Route as PublicTalleresRouteImport } from './routes/_public.talleres'
+import { Route as PublicSobreMakranaRouteImport } from './routes/_public.sobre-makrana'
+import { Route as PublicRegistroRouteImport } from './routes/_public.registro'
+import { Route as PublicContactoRouteImport } from './routes/_public.contacto'
+import { Route as AuthenticatedClienteRouteImport } from './routes/_authenticated/cliente'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as PublicNovedadesIndexRouteImport } from './routes/_public.novedades.index'
+import { Route as PublicCatalogoIndexRouteImport } from './routes/_public.catalogo.index'
+import { Route as AuthenticatedClienteIndexRouteImport } from './routes/_authenticated/cliente.index'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
+import { Route as PublicNovedadesSlugRouteImport } from './routes/_public.novedades.$slug'
+import { Route as PublicCatalogoSlugRouteImport } from './routes/_public.catalogo.$slug'
+import { Route as AuthenticatedClienteTalleresRouteImport } from './routes/_authenticated/cliente.talleres'
+import { Route as AuthenticatedClientePerfilRouteImport } from './routes/_authenticated/cliente.perfil'
+import { Route as AuthenticatedClientePedidosRouteImport } from './routes/_authenticated/cliente.pedidos'
+import { Route as AuthenticatedClienteCursosRouteImport } from './routes/_authenticated/cliente.cursos'
+import { Route as AuthenticatedClienteComprobantesRouteImport } from './routes/_authenticated/cliente.comprobantes'
+import { Route as AuthenticatedAdminVentasRouteImport } from './routes/_authenticated/admin.ventas'
+import { Route as AuthenticatedAdminTalleresRouteImport } from './routes/_authenticated/admin.talleres'
+import { Route as AuthenticatedAdminReportesRouteImport } from './routes/_authenticated/admin.reportes'
+import { Route as AuthenticatedAdminProductosRouteImport } from './routes/_authenticated/admin.productos'
+import { Route as AuthenticatedAdminNovedadesRouteImport } from './routes/_authenticated/admin.novedades'
+import { Route as AuthenticatedAdminMovimientosRouteImport } from './routes/_authenticated/admin.movimientos'
+import { Route as AuthenticatedAdminMaterialesRouteImport } from './routes/_authenticated/admin.materiales'
+import { Route as AuthenticatedAdminFeriasRouteImport } from './routes/_authenticated/admin.ferias'
+import { Route as AuthenticatedAdminConfiguracionRouteImport } from './routes/_authenticated/admin.configuracion'
+import { Route as AuthenticatedAdminComprobantesRouteImport } from './routes/_authenticated/admin.comprobantes'
+import { Route as AuthenticatedAdminClientesRouteImport } from './routes/_authenticated/admin.clientes'
+import { Route as AuthenticatedAdminAlmacenesRouteImport } from './routes/_authenticated/admin.almacenes'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PublicRoute = PublicRouteImport.update({
+  id: '/_public',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PublicIndexRoute = PublicIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicTalleresRoute = PublicTalleresRouteImport.update({
+  id: '/talleres',
+  path: '/talleres',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicSobreMakranaRoute = PublicSobreMakranaRouteImport.update({
+  id: '/sobre-makrana',
+  path: '/sobre-makrana',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicRegistroRoute = PublicRegistroRouteImport.update({
+  id: '/registro',
+  path: '/registro',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicContactoRoute = PublicContactoRouteImport.update({
+  id: '/contacto',
+  path: '/contacto',
+  getParentRoute: () => PublicRoute,
+} as any)
+const AuthenticatedClienteRoute = AuthenticatedClienteRouteImport.update({
+  id: '/cliente',
+  path: '/cliente',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const PublicNovedadesIndexRoute = PublicNovedadesIndexRouteImport.update({
+  id: '/novedades/',
+  path: '/novedades/',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicCatalogoIndexRoute = PublicCatalogoIndexRouteImport.update({
+  id: '/catalogo/',
+  path: '/catalogo/',
+  getParentRoute: () => PublicRoute,
+} as any)
+const AuthenticatedClienteIndexRoute =
+  AuthenticatedClienteIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedClienteRoute,
+  } as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const PublicNovedadesSlugRoute = PublicNovedadesSlugRouteImport.update({
+  id: '/novedades/$slug',
+  path: '/novedades/$slug',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicCatalogoSlugRoute = PublicCatalogoSlugRouteImport.update({
+  id: '/catalogo/$slug',
+  path: '/catalogo/$slug',
+  getParentRoute: () => PublicRoute,
+} as any)
+const AuthenticatedClienteTalleresRoute =
+  AuthenticatedClienteTalleresRouteImport.update({
+    id: '/talleres',
+    path: '/talleres',
+    getParentRoute: () => AuthenticatedClienteRoute,
+  } as any)
+const AuthenticatedClientePerfilRoute =
+  AuthenticatedClientePerfilRouteImport.update({
+    id: '/perfil',
+    path: '/perfil',
+    getParentRoute: () => AuthenticatedClienteRoute,
+  } as any)
+const AuthenticatedClientePedidosRoute =
+  AuthenticatedClientePedidosRouteImport.update({
+    id: '/pedidos',
+    path: '/pedidos',
+    getParentRoute: () => AuthenticatedClienteRoute,
+  } as any)
+const AuthenticatedClienteCursosRoute =
+  AuthenticatedClienteCursosRouteImport.update({
+    id: '/cursos',
+    path: '/cursos',
+    getParentRoute: () => AuthenticatedClienteRoute,
+  } as any)
+const AuthenticatedClienteComprobantesRoute =
+  AuthenticatedClienteComprobantesRouteImport.update({
+    id: '/comprobantes',
+    path: '/comprobantes',
+    getParentRoute: () => AuthenticatedClienteRoute,
+  } as any)
+const AuthenticatedAdminVentasRoute =
+  AuthenticatedAdminVentasRouteImport.update({
+    id: '/ventas',
+    path: '/ventas',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminTalleresRoute =
+  AuthenticatedAdminTalleresRouteImport.update({
+    id: '/talleres',
+    path: '/talleres',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminReportesRoute =
+  AuthenticatedAdminReportesRouteImport.update({
+    id: '/reportes',
+    path: '/reportes',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminProductosRoute =
+  AuthenticatedAdminProductosRouteImport.update({
+    id: '/productos',
+    path: '/productos',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminNovedadesRoute =
+  AuthenticatedAdminNovedadesRouteImport.update({
+    id: '/novedades',
+    path: '/novedades',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminMovimientosRoute =
+  AuthenticatedAdminMovimientosRouteImport.update({
+    id: '/movimientos',
+    path: '/movimientos',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminMaterialesRoute =
+  AuthenticatedAdminMaterialesRouteImport.update({
+    id: '/materiales',
+    path: '/materiales',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminFeriasRoute =
+  AuthenticatedAdminFeriasRouteImport.update({
+    id: '/ferias',
+    path: '/ferias',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminConfiguracionRoute =
+  AuthenticatedAdminConfiguracionRouteImport.update({
+    id: '/configuracion',
+    path: '/configuracion',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminComprobantesRoute =
+  AuthenticatedAdminComprobantesRouteImport.update({
+    id: '/comprobantes',
+    path: '/comprobantes',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminClientesRoute =
+  AuthenticatedAdminClientesRouteImport.update({
+    id: '/clientes',
+    path: '/clientes',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminAlmacenesRoute =
+  AuthenticatedAdminAlmacenesRouteImport.update({
+    id: '/almacenes',
+    path: '/almacenes',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '/': typeof PublicIndexRoute
+  '/auth': typeof AuthRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/cliente': typeof AuthenticatedClienteRouteWithChildren
+  '/contacto': typeof PublicContactoRoute
+  '/registro': typeof PublicRegistroRoute
+  '/sobre-makrana': typeof PublicSobreMakranaRoute
+  '/talleres': typeof PublicTalleresRoute
+  '/admin/almacenes': typeof AuthenticatedAdminAlmacenesRoute
+  '/admin/clientes': typeof AuthenticatedAdminClientesRoute
+  '/admin/comprobantes': typeof AuthenticatedAdminComprobantesRoute
+  '/admin/configuracion': typeof AuthenticatedAdminConfiguracionRoute
+  '/admin/ferias': typeof AuthenticatedAdminFeriasRoute
+  '/admin/materiales': typeof AuthenticatedAdminMaterialesRoute
+  '/admin/movimientos': typeof AuthenticatedAdminMovimientosRoute
+  '/admin/novedades': typeof AuthenticatedAdminNovedadesRoute
+  '/admin/productos': typeof AuthenticatedAdminProductosRoute
+  '/admin/reportes': typeof AuthenticatedAdminReportesRoute
+  '/admin/talleres': typeof AuthenticatedAdminTalleresRoute
+  '/admin/ventas': typeof AuthenticatedAdminVentasRoute
+  '/cliente/comprobantes': typeof AuthenticatedClienteComprobantesRoute
+  '/cliente/cursos': typeof AuthenticatedClienteCursosRoute
+  '/cliente/pedidos': typeof AuthenticatedClientePedidosRoute
+  '/cliente/perfil': typeof AuthenticatedClientePerfilRoute
+  '/cliente/talleres': typeof AuthenticatedClienteTalleresRoute
+  '/catalogo/$slug': typeof PublicCatalogoSlugRoute
+  '/novedades/$slug': typeof PublicNovedadesSlugRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
+  '/cliente/': typeof AuthenticatedClienteIndexRoute
+  '/catalogo/': typeof PublicCatalogoIndexRoute
+  '/novedades/': typeof PublicNovedadesIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
+  '/': typeof PublicIndexRoute
+  '/auth': typeof AuthRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/contacto': typeof PublicContactoRoute
+  '/registro': typeof PublicRegistroRoute
+  '/sobre-makrana': typeof PublicSobreMakranaRoute
+  '/talleres': typeof PublicTalleresRoute
+  '/admin/almacenes': typeof AuthenticatedAdminAlmacenesRoute
+  '/admin/clientes': typeof AuthenticatedAdminClientesRoute
+  '/admin/comprobantes': typeof AuthenticatedAdminComprobantesRoute
+  '/admin/configuracion': typeof AuthenticatedAdminConfiguracionRoute
+  '/admin/ferias': typeof AuthenticatedAdminFeriasRoute
+  '/admin/materiales': typeof AuthenticatedAdminMaterialesRoute
+  '/admin/movimientos': typeof AuthenticatedAdminMovimientosRoute
+  '/admin/novedades': typeof AuthenticatedAdminNovedadesRoute
+  '/admin/productos': typeof AuthenticatedAdminProductosRoute
+  '/admin/reportes': typeof AuthenticatedAdminReportesRoute
+  '/admin/talleres': typeof AuthenticatedAdminTalleresRoute
+  '/admin/ventas': typeof AuthenticatedAdminVentasRoute
+  '/cliente/comprobantes': typeof AuthenticatedClienteComprobantesRoute
+  '/cliente/cursos': typeof AuthenticatedClienteCursosRoute
+  '/cliente/pedidos': typeof AuthenticatedClientePedidosRoute
+  '/cliente/perfil': typeof AuthenticatedClientePerfilRoute
+  '/cliente/talleres': typeof AuthenticatedClienteTalleresRoute
+  '/catalogo/$slug': typeof PublicCatalogoSlugRoute
+  '/novedades/$slug': typeof PublicNovedadesSlugRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
+  '/cliente': typeof AuthenticatedClienteIndexRoute
+  '/catalogo': typeof PublicCatalogoIndexRoute
+  '/novedades': typeof PublicNovedadesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/_public': typeof PublicRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/_authenticated/cliente': typeof AuthenticatedClienteRouteWithChildren
+  '/_public/contacto': typeof PublicContactoRoute
+  '/_public/registro': typeof PublicRegistroRoute
+  '/_public/sobre-makrana': typeof PublicSobreMakranaRoute
+  '/_public/talleres': typeof PublicTalleresRoute
+  '/_public/': typeof PublicIndexRoute
+  '/_authenticated/admin/almacenes': typeof AuthenticatedAdminAlmacenesRoute
+  '/_authenticated/admin/clientes': typeof AuthenticatedAdminClientesRoute
+  '/_authenticated/admin/comprobantes': typeof AuthenticatedAdminComprobantesRoute
+  '/_authenticated/admin/configuracion': typeof AuthenticatedAdminConfiguracionRoute
+  '/_authenticated/admin/ferias': typeof AuthenticatedAdminFeriasRoute
+  '/_authenticated/admin/materiales': typeof AuthenticatedAdminMaterialesRoute
+  '/_authenticated/admin/movimientos': typeof AuthenticatedAdminMovimientosRoute
+  '/_authenticated/admin/novedades': typeof AuthenticatedAdminNovedadesRoute
+  '/_authenticated/admin/productos': typeof AuthenticatedAdminProductosRoute
+  '/_authenticated/admin/reportes': typeof AuthenticatedAdminReportesRoute
+  '/_authenticated/admin/talleres': typeof AuthenticatedAdminTalleresRoute
+  '/_authenticated/admin/ventas': typeof AuthenticatedAdminVentasRoute
+  '/_authenticated/cliente/comprobantes': typeof AuthenticatedClienteComprobantesRoute
+  '/_authenticated/cliente/cursos': typeof AuthenticatedClienteCursosRoute
+  '/_authenticated/cliente/pedidos': typeof AuthenticatedClientePedidosRoute
+  '/_authenticated/cliente/perfil': typeof AuthenticatedClientePerfilRoute
+  '/_authenticated/cliente/talleres': typeof AuthenticatedClienteTalleresRoute
+  '/_public/catalogo/$slug': typeof PublicCatalogoSlugRoute
+  '/_public/novedades/$slug': typeof PublicNovedadesSlugRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
+  '/_authenticated/cliente/': typeof AuthenticatedClienteIndexRoute
+  '/_public/catalogo/': typeof PublicCatalogoIndexRoute
+  '/_public/novedades/': typeof PublicNovedadesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/sitemap.xml'
+    | '/admin'
+    | '/cliente'
+    | '/contacto'
+    | '/registro'
+    | '/sobre-makrana'
+    | '/talleres'
+    | '/admin/almacenes'
+    | '/admin/clientes'
+    | '/admin/comprobantes'
+    | '/admin/configuracion'
+    | '/admin/ferias'
+    | '/admin/materiales'
+    | '/admin/movimientos'
+    | '/admin/novedades'
+    | '/admin/productos'
+    | '/admin/reportes'
+    | '/admin/talleres'
+    | '/admin/ventas'
+    | '/cliente/comprobantes'
+    | '/cliente/cursos'
+    | '/cliente/pedidos'
+    | '/cliente/perfil'
+    | '/cliente/talleres'
+    | '/catalogo/$slug'
+    | '/novedades/$slug'
+    | '/admin/'
+    | '/cliente/'
+    | '/catalogo/'
+    | '/novedades/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/sitemap.xml'
+    | '/contacto'
+    | '/registro'
+    | '/sobre-makrana'
+    | '/talleres'
+    | '/admin/almacenes'
+    | '/admin/clientes'
+    | '/admin/comprobantes'
+    | '/admin/configuracion'
+    | '/admin/ferias'
+    | '/admin/materiales'
+    | '/admin/movimientos'
+    | '/admin/novedades'
+    | '/admin/productos'
+    | '/admin/reportes'
+    | '/admin/talleres'
+    | '/admin/ventas'
+    | '/cliente/comprobantes'
+    | '/cliente/cursos'
+    | '/cliente/pedidos'
+    | '/cliente/perfil'
+    | '/cliente/talleres'
+    | '/catalogo/$slug'
+    | '/novedades/$slug'
+    | '/admin'
+    | '/cliente'
+    | '/catalogo'
+    | '/novedades'
+  id:
+    | '__root__'
+    | '/_authenticated'
+    | '/_public'
+    | '/auth'
+    | '/sitemap.xml'
+    | '/_authenticated/admin'
+    | '/_authenticated/cliente'
+    | '/_public/contacto'
+    | '/_public/registro'
+    | '/_public/sobre-makrana'
+    | '/_public/talleres'
+    | '/_public/'
+    | '/_authenticated/admin/almacenes'
+    | '/_authenticated/admin/clientes'
+    | '/_authenticated/admin/comprobantes'
+    | '/_authenticated/admin/configuracion'
+    | '/_authenticated/admin/ferias'
+    | '/_authenticated/admin/materiales'
+    | '/_authenticated/admin/movimientos'
+    | '/_authenticated/admin/novedades'
+    | '/_authenticated/admin/productos'
+    | '/_authenticated/admin/reportes'
+    | '/_authenticated/admin/talleres'
+    | '/_authenticated/admin/ventas'
+    | '/_authenticated/cliente/comprobantes'
+    | '/_authenticated/cliente/cursos'
+    | '/_authenticated/cliente/pedidos'
+    | '/_authenticated/cliente/perfil'
+    | '/_authenticated/cliente/talleres'
+    | '/_public/catalogo/$slug'
+    | '/_public/novedades/$slug'
+    | '/_authenticated/admin/'
+    | '/_authenticated/cliente/'
+    | '/_public/catalogo/'
+    | '/_public/novedades/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  PublicRoute: typeof PublicRouteWithChildren
+  AuthRoute: typeof AuthRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_public': {
+      id: '/_public'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof PublicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_public/': {
+      id: '/_public/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof PublicIndexRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/talleres': {
+      id: '/_public/talleres'
+      path: '/talleres'
+      fullPath: '/talleres'
+      preLoaderRoute: typeof PublicTalleresRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/sobre-makrana': {
+      id: '/_public/sobre-makrana'
+      path: '/sobre-makrana'
+      fullPath: '/sobre-makrana'
+      preLoaderRoute: typeof PublicSobreMakranaRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/registro': {
+      id: '/_public/registro'
+      path: '/registro'
+      fullPath: '/registro'
+      preLoaderRoute: typeof PublicRegistroRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/contacto': {
+      id: '/_public/contacto'
+      path: '/contacto'
+      fullPath: '/contacto'
+      preLoaderRoute: typeof PublicContactoRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_authenticated/cliente': {
+      id: '/_authenticated/cliente'
+      path: '/cliente'
+      fullPath: '/cliente'
+      preLoaderRoute: typeof AuthenticatedClienteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_public/novedades/': {
+      id: '/_public/novedades/'
+      path: '/novedades'
+      fullPath: '/novedades/'
+      preLoaderRoute: typeof PublicNovedadesIndexRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/catalogo/': {
+      id: '/_public/catalogo/'
+      path: '/catalogo'
+      fullPath: '/catalogo/'
+      preLoaderRoute: typeof PublicCatalogoIndexRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_authenticated/cliente/': {
+      id: '/_authenticated/cliente/'
+      path: '/'
+      fullPath: '/cliente/'
+      preLoaderRoute: typeof AuthenticatedClienteIndexRouteImport
+      parentRoute: typeof AuthenticatedClienteRoute
+    }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_public/novedades/$slug': {
+      id: '/_public/novedades/$slug'
+      path: '/novedades/$slug'
+      fullPath: '/novedades/$slug'
+      preLoaderRoute: typeof PublicNovedadesSlugRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/catalogo/$slug': {
+      id: '/_public/catalogo/$slug'
+      path: '/catalogo/$slug'
+      fullPath: '/catalogo/$slug'
+      preLoaderRoute: typeof PublicCatalogoSlugRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_authenticated/cliente/talleres': {
+      id: '/_authenticated/cliente/talleres'
+      path: '/talleres'
+      fullPath: '/cliente/talleres'
+      preLoaderRoute: typeof AuthenticatedClienteTalleresRouteImport
+      parentRoute: typeof AuthenticatedClienteRoute
+    }
+    '/_authenticated/cliente/perfil': {
+      id: '/_authenticated/cliente/perfil'
+      path: '/perfil'
+      fullPath: '/cliente/perfil'
+      preLoaderRoute: typeof AuthenticatedClientePerfilRouteImport
+      parentRoute: typeof AuthenticatedClienteRoute
+    }
+    '/_authenticated/cliente/pedidos': {
+      id: '/_authenticated/cliente/pedidos'
+      path: '/pedidos'
+      fullPath: '/cliente/pedidos'
+      preLoaderRoute: typeof AuthenticatedClientePedidosRouteImport
+      parentRoute: typeof AuthenticatedClienteRoute
+    }
+    '/_authenticated/cliente/cursos': {
+      id: '/_authenticated/cliente/cursos'
+      path: '/cursos'
+      fullPath: '/cliente/cursos'
+      preLoaderRoute: typeof AuthenticatedClienteCursosRouteImport
+      parentRoute: typeof AuthenticatedClienteRoute
+    }
+    '/_authenticated/cliente/comprobantes': {
+      id: '/_authenticated/cliente/comprobantes'
+      path: '/comprobantes'
+      fullPath: '/cliente/comprobantes'
+      preLoaderRoute: typeof AuthenticatedClienteComprobantesRouteImport
+      parentRoute: typeof AuthenticatedClienteRoute
+    }
+    '/_authenticated/admin/ventas': {
+      id: '/_authenticated/admin/ventas'
+      path: '/ventas'
+      fullPath: '/admin/ventas'
+      preLoaderRoute: typeof AuthenticatedAdminVentasRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/talleres': {
+      id: '/_authenticated/admin/talleres'
+      path: '/talleres'
+      fullPath: '/admin/talleres'
+      preLoaderRoute: typeof AuthenticatedAdminTalleresRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/reportes': {
+      id: '/_authenticated/admin/reportes'
+      path: '/reportes'
+      fullPath: '/admin/reportes'
+      preLoaderRoute: typeof AuthenticatedAdminReportesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/productos': {
+      id: '/_authenticated/admin/productos'
+      path: '/productos'
+      fullPath: '/admin/productos'
+      preLoaderRoute: typeof AuthenticatedAdminProductosRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/novedades': {
+      id: '/_authenticated/admin/novedades'
+      path: '/novedades'
+      fullPath: '/admin/novedades'
+      preLoaderRoute: typeof AuthenticatedAdminNovedadesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/movimientos': {
+      id: '/_authenticated/admin/movimientos'
+      path: '/movimientos'
+      fullPath: '/admin/movimientos'
+      preLoaderRoute: typeof AuthenticatedAdminMovimientosRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/materiales': {
+      id: '/_authenticated/admin/materiales'
+      path: '/materiales'
+      fullPath: '/admin/materiales'
+      preLoaderRoute: typeof AuthenticatedAdminMaterialesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/ferias': {
+      id: '/_authenticated/admin/ferias'
+      path: '/ferias'
+      fullPath: '/admin/ferias'
+      preLoaderRoute: typeof AuthenticatedAdminFeriasRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/configuracion': {
+      id: '/_authenticated/admin/configuracion'
+      path: '/configuracion'
+      fullPath: '/admin/configuracion'
+      preLoaderRoute: typeof AuthenticatedAdminConfiguracionRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/comprobantes': {
+      id: '/_authenticated/admin/comprobantes'
+      path: '/comprobantes'
+      fullPath: '/admin/comprobantes'
+      preLoaderRoute: typeof AuthenticatedAdminComprobantesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/clientes': {
+      id: '/_authenticated/admin/clientes'
+      path: '/clientes'
+      fullPath: '/admin/clientes'
+      preLoaderRoute: typeof AuthenticatedAdminClientesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/almacenes': {
+      id: '/_authenticated/admin/almacenes'
+      path: '/almacenes'
+      fullPath: '/admin/almacenes'
+      preLoaderRoute: typeof AuthenticatedAdminAlmacenesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
     }
   }
 }
 
+interface AuthenticatedAdminRouteChildren {
+  AuthenticatedAdminAlmacenesRoute: typeof AuthenticatedAdminAlmacenesRoute
+  AuthenticatedAdminClientesRoute: typeof AuthenticatedAdminClientesRoute
+  AuthenticatedAdminComprobantesRoute: typeof AuthenticatedAdminComprobantesRoute
+  AuthenticatedAdminConfiguracionRoute: typeof AuthenticatedAdminConfiguracionRoute
+  AuthenticatedAdminFeriasRoute: typeof AuthenticatedAdminFeriasRoute
+  AuthenticatedAdminMaterialesRoute: typeof AuthenticatedAdminMaterialesRoute
+  AuthenticatedAdminMovimientosRoute: typeof AuthenticatedAdminMovimientosRoute
+  AuthenticatedAdminNovedadesRoute: typeof AuthenticatedAdminNovedadesRoute
+  AuthenticatedAdminProductosRoute: typeof AuthenticatedAdminProductosRoute
+  AuthenticatedAdminReportesRoute: typeof AuthenticatedAdminReportesRoute
+  AuthenticatedAdminTalleresRoute: typeof AuthenticatedAdminTalleresRoute
+  AuthenticatedAdminVentasRoute: typeof AuthenticatedAdminVentasRoute
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+}
+
+const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
+  AuthenticatedAdminAlmacenesRoute: AuthenticatedAdminAlmacenesRoute,
+  AuthenticatedAdminClientesRoute: AuthenticatedAdminClientesRoute,
+  AuthenticatedAdminComprobantesRoute: AuthenticatedAdminComprobantesRoute,
+  AuthenticatedAdminConfiguracionRoute: AuthenticatedAdminConfiguracionRoute,
+  AuthenticatedAdminFeriasRoute: AuthenticatedAdminFeriasRoute,
+  AuthenticatedAdminMaterialesRoute: AuthenticatedAdminMaterialesRoute,
+  AuthenticatedAdminMovimientosRoute: AuthenticatedAdminMovimientosRoute,
+  AuthenticatedAdminNovedadesRoute: AuthenticatedAdminNovedadesRoute,
+  AuthenticatedAdminProductosRoute: AuthenticatedAdminProductosRoute,
+  AuthenticatedAdminReportesRoute: AuthenticatedAdminReportesRoute,
+  AuthenticatedAdminTalleresRoute: AuthenticatedAdminTalleresRoute,
+  AuthenticatedAdminVentasRoute: AuthenticatedAdminVentasRoute,
+  AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+}
+
+const AuthenticatedAdminRouteWithChildren =
+  AuthenticatedAdminRoute._addFileChildren(AuthenticatedAdminRouteChildren)
+
+interface AuthenticatedClienteRouteChildren {
+  AuthenticatedClienteComprobantesRoute: typeof AuthenticatedClienteComprobantesRoute
+  AuthenticatedClienteCursosRoute: typeof AuthenticatedClienteCursosRoute
+  AuthenticatedClientePedidosRoute: typeof AuthenticatedClientePedidosRoute
+  AuthenticatedClientePerfilRoute: typeof AuthenticatedClientePerfilRoute
+  AuthenticatedClienteTalleresRoute: typeof AuthenticatedClienteTalleresRoute
+  AuthenticatedClienteIndexRoute: typeof AuthenticatedClienteIndexRoute
+}
+
+const AuthenticatedClienteRouteChildren: AuthenticatedClienteRouteChildren = {
+  AuthenticatedClienteComprobantesRoute: AuthenticatedClienteComprobantesRoute,
+  AuthenticatedClienteCursosRoute: AuthenticatedClienteCursosRoute,
+  AuthenticatedClientePedidosRoute: AuthenticatedClientePedidosRoute,
+  AuthenticatedClientePerfilRoute: AuthenticatedClientePerfilRoute,
+  AuthenticatedClienteTalleresRoute: AuthenticatedClienteTalleresRoute,
+  AuthenticatedClienteIndexRoute: AuthenticatedClienteIndexRoute,
+}
+
+const AuthenticatedClienteRouteWithChildren =
+  AuthenticatedClienteRoute._addFileChildren(AuthenticatedClienteRouteChildren)
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRouteWithChildren
+  AuthenticatedClienteRoute: typeof AuthenticatedClienteRouteWithChildren
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRouteWithChildren,
+  AuthenticatedClienteRoute: AuthenticatedClienteRouteWithChildren,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
+interface PublicRouteChildren {
+  PublicContactoRoute: typeof PublicContactoRoute
+  PublicRegistroRoute: typeof PublicRegistroRoute
+  PublicSobreMakranaRoute: typeof PublicSobreMakranaRoute
+  PublicTalleresRoute: typeof PublicTalleresRoute
+  PublicIndexRoute: typeof PublicIndexRoute
+  PublicCatalogoSlugRoute: typeof PublicCatalogoSlugRoute
+  PublicNovedadesSlugRoute: typeof PublicNovedadesSlugRoute
+  PublicCatalogoIndexRoute: typeof PublicCatalogoIndexRoute
+  PublicNovedadesIndexRoute: typeof PublicNovedadesIndexRoute
+}
+
+const PublicRouteChildren: PublicRouteChildren = {
+  PublicContactoRoute: PublicContactoRoute,
+  PublicRegistroRoute: PublicRegistroRoute,
+  PublicSobreMakranaRoute: PublicSobreMakranaRoute,
+  PublicTalleresRoute: PublicTalleresRoute,
+  PublicIndexRoute: PublicIndexRoute,
+  PublicCatalogoSlugRoute: PublicCatalogoSlugRoute,
+  PublicNovedadesSlugRoute: PublicNovedadesSlugRoute,
+  PublicCatalogoIndexRoute: PublicCatalogoIndexRoute,
+  PublicNovedadesIndexRoute: PublicNovedadesIndexRoute,
+}
+
+const PublicRouteWithChildren =
+  PublicRoute._addFileChildren(PublicRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  PublicRoute: PublicRouteWithChildren,
+  AuthRoute: AuthRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
