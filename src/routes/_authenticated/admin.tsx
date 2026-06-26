@@ -3,9 +3,11 @@ import { supabase } from "@/integrations/supabase/client";
 import { SidebarProvider, Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarTrigger, SidebarHeader } from "@/components/ui/sidebar";
 import { LayoutDashboard, Package, Boxes, Warehouse, ArrowLeftRight, ShoppingCart, FileText, Users, Newspaper, GraduationCap, Tent, BarChart3, Settings, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { clearDevAdminSession, hasDevAdminSession } from "@/lib/dev-admin";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   beforeLoad: async () => {
+    if (hasDevAdminSession()) return;
     const { data: u } = await supabase.auth.getUser();
     if (!u.user) throw redirect({ to: "/auth" });
     const { data: roles } = await supabase.from("user_roles").select("role").eq("user_id", u.user.id);
@@ -35,7 +37,11 @@ const items = [
 function AdminShell() {
   const router = useRouter();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  async function signOut() { await supabase.auth.signOut(); router.navigate({ to: "/" }); }
+  async function signOut() {
+    clearDevAdminSession();
+    await supabase.auth.signOut();
+    router.navigate({ to: "/" });
+  }
   return (
     <SidebarProvider>
       <div className="flex min-h-screen w-full bg-background">

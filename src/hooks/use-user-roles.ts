@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { hasDevAdminSession } from "@/lib/dev-admin";
 
 export type AppRole = "admin" | "ventas" | "almacen" | "cliente";
 
@@ -9,6 +10,13 @@ export function useUserRoles() {
   useEffect(() => {
     let active = true;
     (async () => {
+      if (hasDevAdminSession()) {
+        if (active) {
+          setRoles(["admin"]);
+          setLoading(false);
+        }
+        return;
+      }
       const { data: u } = await supabase.auth.getUser();
       if (!u.user) { if (active) { setRoles([]); setLoading(false); } return; }
       const { data } = await supabase.from("user_roles").select("role").eq("user_id", u.user.id);

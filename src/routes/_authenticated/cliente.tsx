@@ -3,6 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { SidebarProvider, Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarTrigger, SidebarHeader } from "@/components/ui/sidebar";
 import { LayoutDashboard, User, ShoppingBag, FileText, GraduationCap, BookOpen, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { clearDevAdminSession } from "@/lib/dev-admin";
 
 export const Route = createFileRoute("/_authenticated/cliente")({
   component: ClientShell,
@@ -21,6 +22,7 @@ function ClientShell() {
   const router = useRouter();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   async function signOut() {
+    clearDevAdminSession();
     await supabase.auth.signOut();
     router.navigate({ to: "/" });
   }
