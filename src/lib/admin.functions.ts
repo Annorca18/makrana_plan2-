@@ -233,9 +233,9 @@ export const adminApplyMovement = createServerFn({ method: "POST" })
       _movement_type: data.movement_type,
       _quantity: data.quantity,
       _warehouse_id: data.warehouse_id,
-      _warehouse_dest_id: data.warehouse_dest_id ?? null,
-      _reason: data.reason ?? null,
-      _notes: data.notes ?? null,
+      _warehouse_dest_id: data.warehouse_dest_id ?? undefined,
+      _reason: data.reason ?? undefined,
+      _notes: data.notes ?? undefined,
     });
     if (error) throw error;
     return { id };
