@@ -944,6 +944,26 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      apply_inventory_movement: {
+        Args: {
+          _movement_type: Database["public"]["Enums"]["movement_type"]
+          _notes?: string
+          _product_id: string
+          _quantity: number
+          _reason?: string
+          _warehouse_dest_id?: string
+          _warehouse_id: string
+        }
+        Returns: string
+      }
+      confirm_sale: {
+        Args: { _sale_id: string }
+        Returns: {
+          receipt_id: string
+          receipt_number: string
+          sale_id: string
+        }[]
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
